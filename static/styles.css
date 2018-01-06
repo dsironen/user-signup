@@ -1,0 +1,11 @@
+html {
+    display: block;
+}
+
+.error {
+    color: red;
+} 
+
+.success {
+    color: rgb(32, 171, 19); text-align: center;
+}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>Sign in</h1>
+<form method="post">
+    <table>
+        <tr>
+            <td><label for="username">Username</label></td>
+            <td>
+                <input id = "username" name="username" type="text" value="{{username}}">
+                <span class="error">{{username_error}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td>
+                <input id="password" name="password" type="password">
+                <span class="error">{{password1_error}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="verify">Verify Password</label></td>
+            <td>
+                <input id= "verify" name="verify" type="password">
+                <span class="error">{{verify_error}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="email">Email (optional)</label></td>
+            <td>
+                <input  id= "email" name="email" value="{{email}}">
+                <span class="error">{{email_error}}</span>
+            </td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+
+{% endblock %}
