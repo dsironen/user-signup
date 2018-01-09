@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 import cgi
+import re
 
 
 app = Flask(__name__)
@@ -17,9 +18,9 @@ def validate():
     username_error = ""
 
     if " " in username:
-        username_error = "No spaces allowed in User name."
+        username_error = "No spaces allowed in Username."
     elif len(username) < 3 or len(username) > 20:
-        username_error = "User name must be between 3 and 20 characters."
+        username_error = "Username must be between 3 and 20 characters."
     else:
         username_error = ""
 
@@ -43,12 +44,12 @@ def validate():
 
     email = request.form["email"]
     email_error = ""
-
+    
     if email != "":
-        if "@" not in email or "." not in email or " " in email:
+        if "@" not in email or "@@" in email or "." not in email or ".." in email or " " in email:
             email_error = "Please enter a valid email. (Optional)"
         elif len(email) < 3 or len(email) > 20:
-            email_error = "Email may not be less than 3 or greater than 20 characters."
+            email_error = "Email must be less than 3 or greater than 20 characters."
     else:
         email_error = ""
 
@@ -58,8 +59,6 @@ def validate():
         return render_template("index.html", username = username, 
             username_error = username_error, password_error = password_error, 
             verify_error = verify_error, email = email, email_error = email_error)
-
-
 
 
 @app.route("/welcome")
